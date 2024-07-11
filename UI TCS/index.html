@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Star Protect Vehicle System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Login Page -->
+      <div id="loginPage">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <label for="userType">User Type:</label>
+          <select id="userType" required>
+            <option value="admin">Admin</option>
+            <option value="underwriter">Underwriter</option></select
+          ><br />
+          <label for="userId">User ID:</label>
+          <input type="text" id="userId" required /><br />
+          <label for="password">Password:</label>
+          <input type="password" id="password" required /><br />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+
+      <!-- Admin Home Page -->
+      <div id="adminPage" class="hidden">
+        <h2>Admin Home Page</h2>
+        <button onclick="showSection('registerUnderwriter')">
+          Underwriter Registration
+        </button>
+        <button onclick="showSection('searchUnderwriter')">
+          Search Underwriter by ID
+        </button>
+        <button onclick="showSection('updateUnderwriter')">
+          Update Underwriter Password
+        </button>
+        <button onclick="showSection('deleteUnderwriter')">
+          Delete Underwriter by ID
+        </button>
+        <button onclick="showSection('viewAllUnderwriters')">
+          View All Underwriters
+        </button>
+
+        <!-- Underwriter Registration -->
+        <div id="registerUnderwriter" class="hidden">
+          <h3>Underwriter Registration</h3>
+          <form id="underwriterForm">
+            <label for="underwriterId">Underwriter ID:</label>
+            <input
+              type="text"
+              id="underwriterId"
+              value="Auto-populated"
+              disabled
+            /><br />
+            <label for="name">Name:</label>
+            <input type="text" id="name" maxlength="50" required /><br />
+            <label for="dob">DOB:</label>
+            <input type="date" id="dob" required /><br />
+            <label for="joiningDate">Joining Date:</label>
+            <input type="date" id="joiningDate" required /><br />
+            <label for="defaultPassword">Default Password:</label>
+            <input type="password" id="defaultPassword" required /><br />
+            <button type="submit">Register</button>
+          </form>
+        </div>
+
+        <!-- Search Underwriter -->
+        <div id="searchUnderwriter" class="hidden">
+          <h3>Search Underwriter by ID</h3>
+          <form id="searchUnderwriterForm">
+            <label for="searchUnderwriterId">Underwriter ID:</label>
+            <input type="text" id="searchUnderwriterId" required /><br />
+            <button type="submit">Search</button>
+          </form>
+          <div id="underwriterDetails"></div>
+        </div>
+
+        <!-- Update Underwriter Password -->
+        <div id="updateUnderwriter" class="hidden">
+          <h3>Update Underwriter Password</h3>
+          <form id="updateUnderwriterForm">
+            <label for="updateUnderwriterId">Underwriter ID:</label>
+            <input type="text" id="updateUnderwriterId" required /><br />
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" required /><br />
+            <button type="submit">Update</button>
+          </form>
+        </div>
+
+        <!-- Delete Underwriter -->
+        <div id="deleteUnderwriter" class="hidden">
+          <h3>Delete Underwriter by ID</h3>
+          <form id="deleteUnderwriterForm">
+            <label for="deleteUnderwriterId">Underwriter ID:</label>
+            <input type="text" id="deleteUnderwriterId" required /><br />
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+
+        <!-- View All Underwriters -->
+        <div id="viewAllUnderwriters" class="hidden">
+          <h3>View All Underwriters</h3>
+          <table id="underwritersTable">
+            <thead>
+              <tr>
+                <th>Underwriter ID</th>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Joining Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Underwriter details will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Underwriter Home Page -->
+      <div id="underwriterPage" class="hidden">
+        <h2>Underwriter Home Page</h2>
+        <button onclick="showSection('createInsurance')">
+          Create New Vehicle Insurance
+        </button>
+
+        <!-- Create New Vehicle Insurance -->
+        <div id="createInsurance" class="hidden">
+          <h3>Create New Vehicle Insurance</h3>
+          <form id="insuranceForm">
+            <label for="vehicleNo">Vehicle No:</label>
+            <input type="text" id="vehicleNo" maxlength="10" required /><br />
+            <label for="vehicleType">Vehicle Type:</label>
+            <select id="vehicleType">
+              <option value="2-wheeler">2-wheeler</option>
+              <option value="4-wheeler">4-wheeler</option></select
+            ><br />
+            <label for="customerName">Customer Name:</label>
+            <input
+              type="text"
+              id="customerName"
+              maxlength="50"
+              required
+            /><br />
+            <label for="engineNo">Engine No:</label>
+            <input type="text" id="engineNo" required /><br />
+            <label for="chasisNo">Chasis No:</label>
+            <input type="text" id="chasisNo" required /><br />
+            <label for="phoneNo">Phone No:</label>
+            <input type="text" id="phoneNo" maxlength="10" required /><br />
+            <label for="premiumAmnt">Premium Amount:</label>
+            <input type="number" id="premiumAmnt" required /><br />
+            <label for="type">Type:</label>
+            <select id="type">
+              <option value="full">Full Insurance</option>
+              <option value="thirdParty">Third Party</option></select
+            ><br />
+            <label for="fromDate">From Date:</label>
+            <input type="date" id="fromDate" required /><br />
+            <label for="toDate">To Date:</label>
+            <input type="date" id="toDate" required /><br />
+            <label for="underwriterIdInsurance">Underwriter ID:</label>
+            <input type="text" id="underwriterIdInsurance" required /><br />
+            <button type="submit">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
